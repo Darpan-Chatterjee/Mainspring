@@ -1,7 +1,5 @@
 package com.Mainspring.Utilities;
 
-import java.io.IOException;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -14,14 +12,12 @@ public class DriverSet {
 	String browserPath;
 	int timeOutLimit;
 	
-	public DriverSet() throws IOException {
-		PropertyFileData dataObj= new PropertyFileData();
-		Properties prop= dataObj.getPropertyData("AutomationConfig");
+	public DriverSet(String browserPath,int timeOutLimit) {
 		
-		this.browserPath = prop.getProperty("ChromePath");
-		this.timeOutLimit = Integer.parseInt(prop.getProperty("AutomationTimeout"));
+		this.browserPath = browserPath;
+		this.timeOutLimit = timeOutLimit;
 	}
-	public void openBrowser()
+	public WebDriver openBrowser()
 	{
 		System.setProperty("webdriver.chrome.driver", browserPath);
 		DesiredCapabilities caps = DesiredCapabilities.chrome();
@@ -31,7 +27,7 @@ public class DriverSet {
 		caps.setCapability(ChromeOptions.CAPABILITY, options);
 		WebDriver driver = new ChromeDriver(caps);
 		driver.manage().timeouts().implicitlyWait(timeOutLimit, TimeUnit.SECONDS);
-		driver.get("https://mainspring.cognizant.com");
+		return driver;
 	}
 
 }
