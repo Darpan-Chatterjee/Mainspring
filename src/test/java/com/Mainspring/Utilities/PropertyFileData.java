@@ -12,10 +12,10 @@ public class PropertyFileData {
 	
 	public PropertyFileData() {
 		this.automationPropertyFilePath = "./src/test/resources/Manager/AutomationConfig.properties";
-		this.ObjectPropertyFilePath = "./src/test/resources/Object Repository/ObjectRepo.properties";
+		this.ObjectPropertyFilePath = "./src/test/resources/Object Repository/";
 	}
-
-	public Properties getPropertyData(String propFilePath) throws IOException
+	
+	public String getPropertyData(String propFilePath,String fieldName) throws IOException
 	{
 		File file=null;
 		FileInputStream fi;
@@ -25,13 +25,13 @@ public class PropertyFileData {
 		{
 			file= new File(automationPropertyFilePath);
 		}
-		else if(propFilePath.equals("ObjectRepo"))
+		else
 		{
-			file= new File(ObjectPropertyFilePath);
+			file= new File(ObjectPropertyFilePath+propFilePath+".properties");
 		}
 		fi= new FileInputStream(file);
 		prop = new Properties();
 		prop.load(fi);
-		return prop;
+		return prop.getProperty(fieldName);
 	}
 }

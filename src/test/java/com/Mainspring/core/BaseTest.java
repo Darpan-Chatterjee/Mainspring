@@ -3,13 +3,13 @@ package com.Mainspring.core;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import com.Mainspring.Pages.HomePage;
 import com.Mainspring.Utilities.DriverSet;
 import com.Mainspring.Utilities.ExcelUtility;
 import com.Mainspring.Utilities.PropertyFileData;
@@ -17,8 +17,7 @@ import com.Mainspring.Utilities.PropertyFileData;
 public class BaseTest {
 	
 	public ArrayList<HashMap<String,String>> excelDataList=null;
-	public WebDriver driver=null;
-	public Properties prop = null;
+	public static WebDriver driver=null;
 	public XSSFWorkbook masterExcelWorkBookObj=null;
 	public ExcelUtility excelUtil=null;
 	
@@ -29,17 +28,19 @@ public class BaseTest {
 	
 	public PropertyFileData dataObj= new PropertyFileData();
 	
+	public HomePage homePageObj=null;
+	
 	@BeforeTest
 	public void setup() throws IOException
 	{
-		prop = dataObj.getPropertyData("AutomationConfig");
-		browserPath=prop.getProperty("ChromePath");
-		timeOutLimit=Integer.parseInt(prop.getProperty("AutomationTimeout"));
-		masterExcelPath=prop.getProperty("MasterExcelPath");
-		masterExcelName=prop.getProperty("MasterExcelName");
+		browserPath=dataObj.getPropertyData("AutomationConfig","ChromePath");
+		timeOutLimit=Integer.parseInt(dataObj.getPropertyData("AutomationConfig","AutomationTimeout"));
+		masterExcelPath=dataObj.getPropertyData("AutomationConfig","MasterExcelPath");
+		masterExcelName=dataObj.getPropertyData("AutomationConfig","MasterExcelName");
 		
 		DriverSet getDriver= new DriverSet(browserPath,timeOutLimit);
 		excelUtil= new ExcelUtility(masterExcelPath,masterExcelName);
+		homePageObj= new HomePage();
 		
 		driver= getDriver.openBrowser();
 		masterExcelWorkBookObj=excelUtil.setExcel();

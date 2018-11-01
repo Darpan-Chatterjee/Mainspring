@@ -14,7 +14,7 @@ public class MainspringReleaseCreation extends BaseTest {
 		System.out.println(excelDataList.get(0).get("Due Date"));
 		
 		
-		driver.get("https://mainspring.cognizant.com");
+		driver.get("https://portal.bsnl.in/myportal/");
 	}
 
 }
