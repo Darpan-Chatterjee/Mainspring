@@ -1,6 +1,8 @@
 package com.Mainspring.core;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,9 +16,10 @@ import com.Mainspring.Utilities.PropertyFileData;
 
 public class BaseTest {
 	
+	public ArrayList<HashMap<String,String>> excelDataList=null;
 	public WebDriver driver=null;
 	public Properties prop = null;
-	public XSSFWorkbook masterExcel=null;
+	public XSSFWorkbook masterExcelWorkBookObj=null;
 	public ExcelUtility excelUtil=null;
 	
 	public String browserPath;
@@ -39,13 +42,14 @@ public class BaseTest {
 		excelUtil= new ExcelUtility(masterExcelPath,masterExcelName);
 		
 		driver= getDriver.openBrowser();
-		masterExcel=excelUtil.setExcel();
+		masterExcelWorkBookObj=excelUtil.setExcel();
 	}
 	
 	@AfterTest
-	public void teardown()
+	public void teardown() throws IOException
 	{
 		//driver.quit();
+		masterExcelWorkBookObj.close();
 	}
 	
 }

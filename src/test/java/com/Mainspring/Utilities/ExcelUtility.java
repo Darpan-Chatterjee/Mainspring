@@ -27,25 +27,25 @@ public class ExcelUtility {
 		return wb;
 	}
 	
-	public ArrayList<HashMap<String,String>> GetExcelDataExtract(XSSFWorkbook wb,String sheetName)
+	public static ArrayList<HashMap<String,String>> GetExcelDataExtract(XSSFWorkbook wb,String sheetName)
 	{
 		int numOfRows,numOfCols;
 		ArrayList<HashMap<String,String>> dataList= new ArrayList<HashMap<String,String>>();
-		HashMap<String,String> items= new HashMap<String,String>();
-
+		
 		numOfRows=wb.getSheet(sheetName).getLastRowNum();
 		numOfCols=wb.getSheet(sheetName).getRow(0).getLastCellNum();
 		
 		for(int row=1;row<=numOfRows;row++)
 		{
+			HashMap<String,String> items= new HashMap<String,String>();
 			for(int col=0;col<numOfCols;col++)
 			{
 				String tempColData=wb.getSheet(sheetName).getRow(0).getCell(col).getStringCellValue();
 				String tempRowData=wb.getSheet(sheetName).getRow(row).getCell(col).getStringCellValue();
 				items.put(tempColData, tempRowData);
-				dataList.add(items);
 			}
+			dataList.add(items);
 		}
 		return dataList;
-	}
+	} 
 }
