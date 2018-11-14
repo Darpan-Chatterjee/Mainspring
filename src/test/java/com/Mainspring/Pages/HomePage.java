@@ -17,7 +17,7 @@ public class HomePage extends BaseTest {
 		signIn=dataObj.getPropertyData("HomePage","SignIn");
 	}
 	
-	public void click()
+	public void clickSignIn()
 	{
 		driver.findElement(By.xpath(signIn)).click();
 		util.waitInSeconds(2);

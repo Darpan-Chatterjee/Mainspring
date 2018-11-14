@@ -49,7 +49,7 @@ public class BaseTest {
 	@AfterTest
 	public void teardown() throws IOException
 	{
-		//driver.quit();
+		driver.quit();
 		masterExcelWorkBookObj.close();
 	}
 	
