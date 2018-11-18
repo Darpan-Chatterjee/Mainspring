@@ -4,41 +4,34 @@ import java.io.IOException;
 
 import org.testng.annotations.Test;
 
-import com.aventstack.extentreports.ExtentReports;
+import com.Mainspring.Utilities.ExtentReportManager;
+import com.Mainspring.core.BaseTest;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-public class HomePageTest {
-	
-	ExtentHtmlReporter htmlReporter;
-    ExtentReports extentReport;
-	
-    @Test
-	 public void ExtentReportManager() throws IOException
-	    {
-	    	htmlReporter = new ExtentHtmlReporter("./Test Result/Consolidated.html");
-	    	extentReport = new ExtentReports();
-	    	extentReport.attachReporter(htmlReporter);
-	    	// creates a toggle for the given test, adds all log events under it    
-	        ExtentTest scenario1 = extentReport.createTest("Scenario1", "This is Scenario1");	        
-	        
-	        ExtentTest testCase11 = scenario1.createNode("Test Case 1 of Scenario 1","This is Test Case 1 of Scenario 1");
-	        testCase11.pass("Test Case1 of Scenario 1 is Passed",MediaEntityBuilder.createScreenCaptureFromPath("C:\\Users\\DARPAN\\Desktop\\IMG_20181018_193746.jpg").build());
-	        
-	        ExtentTest testCase12 = scenario1.createNode("Test Case 2 of Scenario 1","This is Test Case 2 of Scenario 1");
-	        testCase12.fail("Test Case2 is Failed of Scenario 1",MediaEntityBuilder.createScreenCaptureFromPath("C:\\Users\\DARPAN\\Desktop\\IMG_20181018_193746.jpg").build());
+public class HomePageTest extends BaseTest {
 
-	     // creates a toggle for the given test, adds all log events under it    
-	        ExtentTest scenario2 = extentReport.createTest("Scenario2", "This is Scenario2");
-	        
-	        ExtentTest testCase21 = scenario2.createNode("Test Case 1 of Scenario 2","This is Test Case 1 of Scenario 2");
-	        testCase21.pass("Test Case1 is Passed",MediaEntityBuilder.createScreenCaptureFromPath("C:\\Users\\DARPAN\\Desktop\\IMG_20181018_193746.jpg").build());
-	        
-	        ExtentTest testCase22 = scenario2.createNode("Test Case 2 of Scenario 2","This is Test Case 2 of Scenario 2");
-	        testCase22.pass("Test Case1 is Passed",MediaEntityBuilder.createScreenCaptureFromPath("C:\\Users\\DARPAN\\Desktop\\IMG_20181018_193746.jpg").build());
+	static ExtentTest scenario;
 
-	        extentReport.flush();
-	    }
+	public void setHomePageTestScenatio()
+	{
+		scenario = ExtentReportManager.createScenario("Home Page Scenarios", "This is for Home Page Scenario Validation");
+	}
+
+	@Test
+	public void HomeLandingPageCheck() throws IOException
+	{   
+		setHomePageTestScenatio();                                                                                                              	
+		ExtentTest tc = ExtentReportManager.createTestCase(scenario,"Home Landing Page Check","This is Home Landing Page Check");
+		tc.pass("Home Landing Page is available",MediaEntityBuilder.createScreenCaptureFromPath("C:\\Users\\DARPAN\\Desktop\\IMG_20181018_193746.jpg").build());
+		tc.pass("Home Landing Page Navigation is Successful");
+	}
+	@Test
+	public void HomeLandingPageLoginCheck() throws IOException
+	{                                       	
+		ExtentTest tc = ExtentReportManager.createTestCase(scenario,"Home Landing Page Login Check","This is Home Landing Page Login Check");
+		tc.pass("Home Landing Page Login Section is available",MediaEntityBuilder.createScreenCaptureFromPath("C:\\Users\\DARPAN\\Desktop\\IMG_20181018_193746.jpg").build());
+		tc.pass("Home Landing Page Login is Successful");
+	}
 
 }
