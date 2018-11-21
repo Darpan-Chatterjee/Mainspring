@@ -1,6 +1,7 @@
 package com.Mainspring.Utilities;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -29,9 +30,17 @@ public class UtilityMethods {
 		}
 	}
 	
-	public void deleteScreenshots()
+	public void deleteScreenshots() throws IOException
 	{
-		FileUtils.cleanDirectory("TestResult"+File.separator+"Screenshot");
+		if(new File("TestResult"+File.separator+"Screenshot").exists())
+		{
+			FileUtils.deleteDirectory(new File("TestResult"+File.separator+"Screenshot"));
+			new File("TestResult"+File.separator+"Screenshot").mkdir();
+		}
+		else
+		{
+			new File("TestResult"+File.separator+"Screenshot").mkdir();
+		}
 	}
 
 }
