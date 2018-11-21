@@ -1,5 +1,8 @@
 package com.Mainspring.Utilities;
 
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +27,11 @@ public class UtilityMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void deleteScreenshots()
+	{
+		FileUtils.cleanDirectory("TestResult"+File.separator+"Screenshot");
 	}
 
 }

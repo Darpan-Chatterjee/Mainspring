@@ -14,6 +14,7 @@ import com.Mainspring.Utilities.DriverSet;
 import com.Mainspring.Utilities.ExcelUtility;
 import com.Mainspring.Utilities.ExtentReportManager;
 import com.Mainspring.Utilities.PropertyFileData;
+import com.Mainspring.Utilities.UtilityMethods;
 
 public class BaseTest {
 	
@@ -28,12 +29,14 @@ public class BaseTest {
 	public String masterExcelName=null;
 	
 	public PropertyFileData dataObj= new PropertyFileData();
+	public UtilityMethods util=new UtilityMethods();
 	
 	public HomePage homePageObj=null;
 	
 	@BeforeTest
 	public void setup() throws IOException
 	{
+		util.deleteScreenshots();
 		browserPath=dataObj.getPropertyData("AutomationConfig","ChromePath");
 		timeOutLimit=Integer.parseInt(dataObj.getPropertyData("AutomationConfig","AutomationTimeout"));
 		masterExcelPath=dataObj.getPropertyData("AutomationConfig","MasterExcelPath");
@@ -44,6 +47,7 @@ public class BaseTest {
 		homePageObj= new HomePage();
 		
 		ExtentReportManager.startTest();
+		
 		
 		driver= getDriver.openBrowser();
 		masterExcelWorkBookObj=excelUtil.setExcel();

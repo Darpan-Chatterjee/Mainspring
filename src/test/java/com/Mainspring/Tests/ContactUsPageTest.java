@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.Mainspring.Utilities.ExtentReportManager;
+import com.Mainspring.Utilities.Validations;
 import com.Mainspring.core.BaseTest;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -14,11 +15,13 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 public class ContactUsPageTest extends BaseTest {
 	
 	static ExtentTest scenario;
+	Validations validation;
 	
 	@BeforeClass
 	public void ContactUsPageTestScenarioSetup()
 	{
 		scenario = ExtentReportManager.createScenario("Contact Us Page Scenarios", "This is for Contact Us Page Scenario Validation");
+		validation=new Validations(driver);
 	}
 
 	@Test
@@ -26,7 +29,8 @@ public class ContactUsPageTest extends BaseTest {
 	{
 		ExtentTest tc = ExtentReportManager.createTestCase(scenario,"Contact Us Landing Page Check","This is Contact Us Landing Page Check");
 		tc.pass("Contact Us Landing Page is available",MediaEntityBuilder.createScreenCaptureFromPath("C:\\Users\\DARPAN\\Desktop\\IMG_20181018_193746.jpg").build());
-		tc.pass("Contact Us Landing Page Navigation is Successful");
+		//tc.pass("Contact Us Landing Page Navigation is Successful");
+		validation.validation(true, tc, "Contact Us Landing Page Navigation is Successful");
 	}
 	@Test
 	public void ContactLandingPageLoginCheck() throws IOException
@@ -40,6 +44,7 @@ public class ContactUsPageTest extends BaseTest {
 	public void ContactUsPageTestScenarioTearDown()
 	{
 		scenario = null;
+		validation=null;
 	}
 
 }
