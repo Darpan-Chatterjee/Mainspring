@@ -32,14 +32,14 @@ public class UtilityMethods {
 	
 	public void deleteScreenshots() throws IOException
 	{
-		if(new File("TestResult"+File.separator+"Screenshot").exists())
+		if(new File("Test Result"+File.separator+"Screenshot").exists())
 		{
-			FileUtils.deleteDirectory(new File("TestResult"+File.separator+"Screenshot"));
-			new File("TestResult"+File.separator+"Screenshot").mkdir();
+			FileUtils.deleteDirectory(new File("Test Result"+File.separator+"Screenshot"));
+			new File("Test Result"+File.separator+"Screenshot").mkdir();
 		}
 		else
 		{
-			new File("TestResult"+File.separator+"Screenshot").mkdir();
+			new File("Test Result"+File.separator+"Screenshot").mkdir();
 		}
 	}
 

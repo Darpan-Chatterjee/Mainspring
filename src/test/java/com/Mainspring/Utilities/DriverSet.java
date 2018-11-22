@@ -19,11 +19,23 @@ public class DriverSet {
 	}
 	public WebDriver openBrowser()
 	{
-		System.setProperty("webdriver.chrome.driver", browserPath);
+		if(browserPath.toLowerCase().contains("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver", browserPath);
+		}
+		else if(browserPath.toLowerCase().contains("gecko"))
+		{
+			System.setProperty("webdriver.gecko.driver", browserPath);
+		}
+		else
+		{
+			System.setProperty("webdriver.ie.driver", browserPath);
+		}
 		DesiredCapabilities caps = DesiredCapabilities.chrome();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		options.addArguments("disable-extensions");
+		options.addArguments("disable-infobars");
 		caps.setCapability(ChromeOptions.CAPABILITY, options);
 		WebDriver driver = new ChromeDriver(caps);
 		driver.manage().timeouts().implicitlyWait(timeOutLimit, TimeUnit.SECONDS);

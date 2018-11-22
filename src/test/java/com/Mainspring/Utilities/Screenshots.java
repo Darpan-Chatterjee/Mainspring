@@ -26,8 +26,8 @@ public class Screenshots {
 		File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try
 		{
-			FileUtils.copyFile(src, new File("TestResult"+File.separator+"Screenshot"+File.separator+screenshotCount+".jpeg"));
-			screenshotPath="TestResult"+File.separator+"Screenshot"+File.separator+screenshotCount+".jpeg";
+			FileUtils.copyFile(src, new File("Test Result"+File.separator+"Screenshot"+File.separator+screenshotCount+".jpeg"));
+			screenshotPath="."+File.separator+"Test Result"+File.separator+"Screenshot"+File.separator+screenshotCount+".jpeg";
 		}
 		catch (IOException e)
 		{

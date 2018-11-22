@@ -23,6 +23,8 @@ public class BaseTest {
 	public XSSFWorkbook masterExcelWorkBookObj=null;
 	public ExcelUtility excelUtil=null;
 	
+	public static String appUrl; 
+	public String browserValue;
 	public String browserPath;
 	public int timeOutLimit;
 	public String masterExcelPath=null;
@@ -37,7 +39,20 @@ public class BaseTest {
 	public void setup() throws IOException
 	{
 		util.deleteScreenshots();
-		browserPath=dataObj.getPropertyData("AutomationConfig","ChromePath");
+		browserValue=dataObj.getPropertyData("AutomationConfig","Browser");
+		switch(browserValue)
+		{
+		case "Chrome":
+			browserPath=dataObj.getPropertyData("AutomationConfig","ChromePath");
+			break;
+		case "Firefox":
+			browserPath=dataObj.getPropertyData("AutomationConfig","FirefoxPath");
+			break;
+		case "IE":
+			browserPath=dataObj.getPropertyData("AutomationConfig","IEPath");
+			break;
+		}
+		appUrl=dataObj.getPropertyData("AutomationConfig","AppURL");
 		timeOutLimit=Integer.parseInt(dataObj.getPropertyData("AutomationConfig","AutomationTimeout"));
 		masterExcelPath=dataObj.getPropertyData("AutomationConfig","MasterExcelPath");
 		masterExcelName=dataObj.getPropertyData("AutomationConfig","MasterExcelName");
