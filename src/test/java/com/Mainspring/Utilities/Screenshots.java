@@ -1,14 +1,13 @@
 package com.Mainspring.Utilities;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class Screenshots {
+public class Screenshots{
 
 	static int screenshotCount=0;
 	private WebDriver driver;
@@ -23,13 +22,13 @@ public class Screenshots {
 	public String getScreenshot()
 	{
 		screenshotCount++;
-		File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try
 		{
+			File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(src, new File("Test Result"+File.separator+"Screenshot"+File.separator+screenshotCount+".jpeg"));
-			screenshotPath="."+File.separator+"Test Result"+File.separator+"Screenshot"+File.separator+screenshotCount+".jpeg";
+			screenshotPath="."+File.separator+"Screenshot"+File.separator+screenshotCount+".jpeg";
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
 			System.out.println(e.getMessage());
 		}

@@ -21,8 +21,7 @@ public class Validations {
 	{
 		if(status)
 		{
-			//tc.pass(step,MediaEntityBuilder.createScreenCaptureFromPath(scrnsht.getScreenshot()).build());
-			tc.pass(step,MediaEntityBuilder.createScreenCaptureFromPath(".\\Test Result\\Screenshot\\1.jpeg").build());
+			tc.pass(step,MediaEntityBuilder.createScreenCaptureFromPath(scrnsht.getScreenshot()).build());
 		}
 		else
 		{
