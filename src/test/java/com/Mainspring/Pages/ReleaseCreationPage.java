@@ -12,6 +12,7 @@ public class ReleaseCreationPage extends BaseTest {
 	UtilityMethods util= new UtilityMethods();
 	String menu=null;
 	String workspace,myworkspace=null,project,release;
+	String addRelease;
 	
 	public ReleaseCreationPage() throws IOException
 	{
@@ -20,6 +21,7 @@ public class ReleaseCreationPage extends BaseTest {
 		myworkspace=dataObj.getPropertyData("ReleaseCreationPage","myworkspace");
 		project=dataObj.getPropertyData("ReleaseCreationPage","project");
 		release=dataObj.getPropertyData("ReleaseCreationPage","release");
+		addRelease=dataObj.getPropertyData("ReleaseCreationPage","addRelease");
 	}
 	
 	public void clickWorkspace()
@@ -41,6 +43,12 @@ public class ReleaseCreationPage extends BaseTest {
 	{
 		driver.findElement(By.xpath(release)).click();
 		util.waitInSeconds(1);
+	}
+	
+	public void clickAddReleaseButton()
+	{
+		driver.findElement(By.xpath(addRelease)).click();
+		util.waitInSeconds(3);
 	}
 	
 

@@ -30,7 +30,7 @@ public class CognizantLoginPage extends BaseTest {
 		driver.findElement(By.xpath(userid)).sendKeys("212772");
 		util.waitInSeconds(1);
 		driver.findElement(By.xpath(pwd)).sendKeys("TabuPutu11#");
-		util.waitInSeconds(1);
+		util.waitInSeconds(4);
 		driver.findElement(By.xpath(login)).click();
 	}
 
