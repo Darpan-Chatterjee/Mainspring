@@ -160,6 +160,28 @@ public class ReleaseCreationPageTest extends BaseTest {
 			validation.validation(false, tc, "Mainspring Project Plan Page Check is Failed");
 		}
 	}
+	
+	@Test(priority=5)
+	public void AddReleaseCheck() throws IOException
+	{
+		ExtentTest tc = ExtentReportManager.createTestCase(scenario,"Mainspring Create Release Page Check","");
+		try
+		{
+			util.waitInSeconds(20);
+			if(driver.findElement(By.xpath(myWork)).isDisplayed())
+			{
+				ReleaseCreationPage releaseCreationPageObj=new ReleaseCreationPage();
+				util.waitInSeconds(1);
+				releaseCreationPageObj.clickAddReleaseButton();
+				util.waitInSeconds(5);
+				validation.validation(true, tc, "Mainspring Create Release Page is Open");
+			}
+		}
+		catch(Exception e)
+		{
+			validation.validation(false, tc, "Mainspring Create Release Page Check is Failed");
+		}
+	}
 
 	@AfterClass
 	public void ReleaseCreationPageTestScenarioTearDown()
