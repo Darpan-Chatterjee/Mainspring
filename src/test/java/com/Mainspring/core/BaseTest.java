@@ -20,7 +20,7 @@ public class BaseTest {
 	
 	public ArrayList<HashMap<String,String>> excelDataList=null;
 	public static WebDriver driver=null;
-	public XSSFWorkbook masterExcelWorkBookObj=null;
+	public static XSSFWorkbook masterExcelWorkBookObj=null;
 	public ExcelUtility excelUtil=null;
 	
 	public static String appUrl; 

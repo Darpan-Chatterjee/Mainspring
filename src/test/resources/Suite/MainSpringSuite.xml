@@ -7,7 +7,7 @@
 	<test name="Test">
 		<classes>
 			<class name="com.Mainspring.Tests.ReleaseCreationPageTest" />
-			<!-- <class name="com.Mainspring.Tests.ContactUsPageTest" /> -->
+			<class name="com.Mainspring.Tests.SprintCreationPageTest" /> 
 		</classes>
 	</test>
 </suite> 

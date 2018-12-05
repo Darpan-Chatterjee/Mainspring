@@ -35,16 +35,21 @@ public class ExcelUtility {
 		numOfRows=wb.getSheet(sheetName).getLastRowNum();
 		numOfCols=wb.getSheet(sheetName).getRow(0).getLastCellNum();
 		
-		for(int row=1;row<=numOfRows;row++)
-		{
-			HashMap<String,String> items= new HashMap<String,String>();
-			for(int col=0;col<numOfCols;col++)
+		try {
+			for(int row=1;row<=numOfRows;row++)
 			{
-				String tempColData=wb.getSheet(sheetName).getRow(0).getCell(col).getStringCellValue();
-				String tempRowData=wb.getSheet(sheetName).getRow(row).getCell(col).getStringCellValue();
-				items.put(tempColData, tempRowData);
+				HashMap<String,String> items= new HashMap<String,String>();
+				for(int col=0;col<numOfCols;col++)
+				{
+					String tempColData=wb.getSheet(sheetName).getRow(0).getCell(col).getStringCellValue();
+					String tempRowData=wb.getSheet(sheetName).getRow(row).getCell(col).getStringCellValue();
+					items.put(tempColData, tempRowData);
+				}
+				dataList.add(items);
 			}
-			dataList.add(items);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return dataList;
 	} 
