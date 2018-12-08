@@ -8,6 +8,8 @@
 		<classes>
 			<class name="com.Mainspring.Tests.ReleaseCreationPageTest" />
 			<class name="com.Mainspring.Tests.SprintCreationPageTest" /> 
+			<class name="com.Mainspring.Tests.UserStoryCreationPageTest" />
+			<class name="com.Mainspring.Tests.UserTaskCreationPageTest" />
 		</classes>
 	</test>
 </suite> 

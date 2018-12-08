@@ -69,7 +69,6 @@ public class SprintCreationPage extends BaseTest {
 				
 				driver.findElement(By.xpath(save)).click();
 				util.waitInSeconds(1);
-				driver.findElement(By.xpath(returnBtn)).click();
 				status=true;	
 			}	
 		} catch (Exception e) {
